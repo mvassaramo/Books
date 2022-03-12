@@ -1,9 +1,7 @@
 import React from 'react'
 import './BookTile.css'
 
-const BookTile = props => {
-  console.log(props)
-  
+const BookTile = props => {  
   function renderBookCoverImage () {
     return (
       <img
