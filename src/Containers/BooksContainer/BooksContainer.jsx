@@ -5,7 +5,7 @@ import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState('design of everyday things')
 
   useEffect(() => {
     console.log('called useEffect')
@@ -31,8 +31,10 @@ const BooksContainer = () =>  {
 
   return (
     <>
-    <h1>Books!</h1>
-    <SearchBar handleSearch={(e) => setSearchQuery(e.target.value)}/>
+    <header>
+      <h1>Books!</h1>
+      <SearchBar handleSearch={(e) => setSearchQuery(e.target.value)}/>
+    </header>
     <div className='books-container'>
       {renderBooks()}
     </div>
