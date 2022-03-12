@@ -1,4 +1,3 @@
-import './App.css';
 import BooksContainer from './Containers/BooksContainer/BooksContainer';
 
 function App() {
