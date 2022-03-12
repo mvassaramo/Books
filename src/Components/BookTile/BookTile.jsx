@@ -1,10 +1,10 @@
 import React from 'react'
+import './BookTile.css'
 
 const BookTile = props => {
   console.log(props)
   
   function renderBookCoverImage () {
-    console.log('COVER', props.book.cover_i)
     return (
       <img
         alt={`${props.book.title} cover`}
@@ -23,14 +23,14 @@ const BookTile = props => {
   }
 
   return (
-    <>
+    <div className='book-tile'>
       <h3>{props.book.title}</h3>
-      <h5 aria-label='author'>Author: {props.book.author_name}</h5>
       {props.book.cover_i
         ? renderBookCoverImage()
         : renderDefaultCoverImage()
       }
-    </>
+      <h5 aria-label='author'>Author: {props.book.author_name}</h5>
+    </div>
   )
 }
 

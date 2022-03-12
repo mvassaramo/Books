@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BookTile from '../../Components/BookTile/BookTile'
+import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
@@ -28,8 +29,10 @@ const BooksContainer = () =>  {
 
   return (
     <>
-      <h1>Books!</h1>
-      <div>{renderBooks()}</div>
+    <h1>Books!</h1>
+    <div className='books-container'>
+      {renderBooks()}
+    </div>
     </>
   )
 }
