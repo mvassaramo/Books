@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import BookTile from '../../Components/BookTile/BookTile'
+import SearchBar from '../../Components/BookTile/SearchBar/SearchBar'
 import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
+    console.log('called useEffect')
     fetchBooks()
-  }, [])
+  }, [searchQuery])
 
   async function fetchBooks () {
     try {
-      const title = 'power of moments'
-      const result = await fetch(`http://openlibrary.org/search.json?title=${title}`)
+      const result = await fetch(`http://openlibrary.org/search.json?title=${searchQuery}`)
       const data = await result.json()
       const books = await data.docs
       setBooks(books)
@@ -30,6 +32,7 @@ const BooksContainer = () =>  {
   return (
     <>
     <h1>Books!</h1>
+    <SearchBar handleSearch={(e) => setSearchQuery(e.target.value)}/>
     <div className='books-container'>
       {renderBooks()}
     </div>
