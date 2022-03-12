@@ -6,5 +6,6 @@
 
 .book-tile img {
   height: 180px;
+  max-width: 120px;
   padding-left: 40px;
 }
