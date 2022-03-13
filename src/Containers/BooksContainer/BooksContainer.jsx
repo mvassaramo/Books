@@ -37,7 +37,14 @@ const BooksContainer = () =>  {
 
   function renderBooks () {
     return books.map(book => {
-      return <BookTile book={book} key={book.key}/>
+      const {key, title, author_name, cover_i } = book
+      return (
+        <BookTile
+         key={key}
+         title={title}
+         author_name={author_name}
+         cover_i={cover_i} />
+      )
     })
   }
 
