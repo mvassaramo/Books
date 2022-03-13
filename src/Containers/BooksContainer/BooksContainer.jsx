@@ -5,7 +5,7 @@ import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
-  const [query, setQuery] = useState('design of everyday things')
+  const [query, setQuery] = useState('design')
   const [debouncedQuery, setDebouncedQuery] = useState(query)
 
   useEffect(() => {
