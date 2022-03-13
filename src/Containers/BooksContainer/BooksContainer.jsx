@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import BookTile from '../../Components/BookTile/BookTile'
 import SearchBar from '../../Components/BookTile/SearchBar/SearchBar'
 import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
-  const [searchQuery, setSearchQuery] = useState('design of everyday things')
+  const [query, setQuery] = useState('design of everyday things')
+  const [debouncedQuery, setDebouncedQuery] = useState(query)
 
   useEffect(() => {
-    console.log('called useEffect')
+    const timerId = setTimeout(() => {
+      setDebouncedQuery(query)
+    }, 1000)
+
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [query])
+
+  useEffect(() => {
     fetchBooks()
-  }, [searchQuery])
+  }, [debouncedQuery])
+
 
   async function fetchBooks () {
     try {
-      const result = await fetch(`http://openlibrary.org/search.json?title=${searchQuery}`)
+      const result = await fetch(`http://openlibrary.org/search.json?title=${query}`)
       const data = await result.json()
       const books = await data.docs
       setBooks(books)
@@ -33,7 +44,9 @@ const BooksContainer = () =>  {
     <>
     <header>
       <h1>Books!</h1>
-      <SearchBar handleSearch={(e) => setSearchQuery(e.target.value)}/>
+      <SearchBar
+        handleSearch={(e) => setQuery(e.target.value)}
+      />
     </header>
     <div className='books-container'>
       {renderBooks()}
