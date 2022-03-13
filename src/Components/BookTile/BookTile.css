@@ -1,11 +1,11 @@
 .book-tile {
   border: #00B4CC solid 2px;
-  padding-left: 1rem;
+  padding: 1rem;
   border-radius: 12px;
+  text-align: center;
 }
 
 .book-tile img {
   height: 180px;
   max-width: 120px;
-  padding-left: 40px;
 }
