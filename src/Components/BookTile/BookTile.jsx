@@ -1,12 +1,12 @@
 import React from 'react'
 import './BookTile.css'
 
-const BookTile = props => {  
+const BookTile = ({ title, cover_i, author_name}) => {  
   function renderBookCoverImage () {
     return (
       <img
-        alt={`${props.book.title} cover`}
-        src={`https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`}
+        alt={`${title} cover`}
+        src={`https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`}
       />
     )
   }
@@ -22,12 +22,12 @@ const BookTile = props => {
 
   return (
     <div className='book-tile'>
-      <h3>{props.book.title}</h3>
-      {props.book.cover_i
+      <h3>{title}</h3>
+      {cover_i
         ? renderBookCoverImage()
         : renderDefaultCoverImage()
       }
-      <h5 aria-label='author'>Author: {props.book.author_name}</h5>
+      <h5 aria-label='author'>Author: {author_name}</h5>
     </div>
   )
 }
