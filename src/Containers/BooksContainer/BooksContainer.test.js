@@ -6,8 +6,8 @@ import BooksContainer from './BooksContainer'
 describe('BooksContainer component', () => {
   test('it renders the component', () => {
     render(<BooksContainer />)
-    
-    expect(screen.getByRole('heading', { name: 'Books!' })).toBeInTheDocument()
+
+    expect(screen.getByRole('banner')).toBeInTheDocument()
   })
 })
 
