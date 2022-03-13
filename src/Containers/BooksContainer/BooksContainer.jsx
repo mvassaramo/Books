@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import BookTile from '../../Components/BookTile/BookTile'
-import SearchBar from '../../Components/BookTile/SearchBar/SearchBar'
+import SearchBar from '../../Components/SearchBar/SearchBar'
 import './BooksContainer.css'
 
 const BooksContainer = () =>  {
@@ -19,20 +19,21 @@ const BooksContainer = () =>  {
   }, [query])
 
   useEffect(() => {
+    async function fetchBooks () {
+      try {
+        const result = await fetch(`http://openlibrary.org/search.json?title=${query}`)
+        const data = await result.json()
+        const books = await data.docs
+        setBooks(books)
+      } catch (e) {
+        return e
+      }
+    }
+
     fetchBooks()
   }, [debouncedQuery])
 
 
-  async function fetchBooks () {
-    try {
-      const result = await fetch(`http://openlibrary.org/search.json?title=${query}`)
-      const data = await result.json()
-      const books = await data.docs
-      setBooks(books)
-    } catch (e) {
-      return e
-    }
-  }
 
   function renderBooks () {
     return books.map(book => {
