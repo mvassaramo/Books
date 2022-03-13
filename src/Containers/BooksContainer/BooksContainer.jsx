@@ -44,7 +44,6 @@ const BooksContainer = () =>  {
   return (
     <>
     <header>
-      <h1>Books!</h1>
       <SearchBar
         handleSearch={(e) => setQuery(e.target.value)}
       />

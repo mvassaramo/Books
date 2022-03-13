@@ -8,7 +8,6 @@ const SearchBar = props => {
       aria-label='search'
       className='search-bar'
       placeholder='search'
-      // value={props.value}
       onChange={props.handleSearch}/>
   )
 }
