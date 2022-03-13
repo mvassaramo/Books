@@ -5,6 +5,7 @@ header {
   margin-bottom: 30px;
   text-align: center;
   background-color: #00B4CC;
+  overflow: auto;
 }
 
 .books-container {
