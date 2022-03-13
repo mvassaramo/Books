@@ -14,7 +14,7 @@ describe('BookTile', () => {
   it('displays the book author', () => {
     const book = { title: 'random book title', author_name: 'author name' }
     render(<BookTile book={book} />)
-    screen.debug()
+
     expect(screen.getByRole('heading', { name: 'author' })).toBeInTheDocument()
   })
 
