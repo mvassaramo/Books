@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
 import BookTile from '../../Components/BookTile/BookTile'
 import SearchBar from '../../Components/SearchBar/SearchBar'
+import Message from '../../Components/Message/Message'
 import './BooksContainer.css'
 
 const BooksContainer = () =>  {
   const [books, setBooks] = useState([])
-  const [query, setQuery] = useState('design')
+  const [query, setQuery] = useState('design of everyday things')
   const [debouncedQuery, setDebouncedQuery] = useState(query)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedQuery(query)
-    }, 1000)
+    }, 500)
 
     return () => {
       clearTimeout(timerId)
@@ -25,8 +28,11 @@ const BooksContainer = () =>  {
         const data = await result.json()
         const books = await data.docs
         setBooks(books)
+        setIsLoading(false)
       } catch (e) {
-        return e
+        console.log(e)
+        setError(true)
+        setIsLoading(false)
       }
     }
 
@@ -50,14 +56,15 @@ const BooksContainer = () =>  {
 
   return (
     <>
-    <header>
-      <SearchBar
-        handleSearch={(e) => setQuery(e.target.value)}
-      />
-    </header>
-    <div className='books-container'>
-      {renderBooks()}
-    </div>
+      <header>
+        <SearchBar
+          handleSearch={(e) => setQuery(e.target.value)}
+        />
+      </header>
+      <div className='books-container'>
+        {isLoading ? <Message>Loading...</Message> : ''}
+        {error ? <Message>Something wen't wrong!</Message> : renderBooks()}
+      </div>
     </>
   )
 }
