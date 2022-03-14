@@ -42,6 +42,7 @@ const BooksContainer = () =>  {
 
 
   function renderBooks () {
+    if (!books.length) return <Message>Sorry, no results found</Message>
     return books.map(book => {
       const {key, title, author_name, cover_i } = book
       return (
@@ -62,8 +63,9 @@ const BooksContainer = () =>  {
         />
       </header>
       <div className='books-container'>
-        {isLoading ? <Message>Loading...</Message> : ''}
-        {error ? <Message>Something wen't wrong!</Message> : renderBooks()}
+        {isLoading 
+        ? <Message>Loading...</Message> 
+        : error ? <Message>Something wen't wrong!</Message> : renderBooks()}
       </div>
     </>
   )
