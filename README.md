@@ -1,3 +1,8 @@
+### Overview
+
+App using the OpenLibrary API + React - allowe the user to search for books.
+
+
 
 In the project directory, you can run:
 
