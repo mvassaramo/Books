@@ -1,6 +1,6 @@
 ### Overview
 
-App using the OpenLibrary API + React - allowe the user to search for books.
+App using the OpenLibrary API + React - allows the user to search for books.
 
 
 
